@@ -13,11 +13,13 @@ from langchain_core.tools import tool
 
 load_dotenv()
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 model = ChatOpenAI(model = "gpt-4.1-nano", temperature=0) # I want to minimize hallucination - temperature = 0 makes the model output more deterministic 
 
 embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
-pdf_path = "AI Agents\Stock_Market_Performance_2024.pdf"
+pdf_path = os.path.join(BASE_DIR, "Stock_Market_Performance_2024.pdf")
 
 if not os.path.exists(pdf_path):
     raise FileNotFoundError(f"PDF file not found: {pdf_path}")
@@ -39,7 +41,7 @@ text_splitter = RecursiveCharacterTextSplitter(
 
 pages_split = text_splitter.split_documents(pages)
 
-persist_directory = r"C:\Learning_LangGraph\AI Agents"
+persist_directory = os.path.join(BASE_DIR, "chroma_store")
 collection_name = "stock_market"
 
 if not os.path.exists(persist_directory):

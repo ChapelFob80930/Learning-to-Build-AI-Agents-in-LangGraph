@@ -1,2 +1,11 @@
 /venv
 .env
+chroma_store/
+*.mp3
+.idea/
+Benefits_of_Python_Learning.txt
+Destiny2_Edge_of_Fate_Expansion.txt
+Email_to_Thrinath_Startup_Frontend_Progress.txt
+Sick_Leave_Notification.txt
+logging.txt
+meeting_absence_email.txt
